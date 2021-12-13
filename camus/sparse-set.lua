@@ -8,8 +8,8 @@ SparseSet.__mt = { __index = SparseSet }
 -- @return SparseSet
 SparseSet.new = function()
     return setmetatable({
-        sparse = {}
-        dense  = {}
+        sparse = {},
+        dense  = {},
     }, SparseSet.__mt)
 end
 
@@ -22,9 +22,9 @@ SparseSet.has = function(self, i) return self.sparse[i] ~= nil end
 SparseSet.add = function(self, i)
     if self:has(i) then return end
 
-    index = #self.dense + 1
-    self.dense[index]    = element
-    self.sparse[element] = index
+    local index = #self.dense + 1
+    self.dense[index] = i
+    self.sparse[i]    = index
 end
 
 --- Removes the given integer from the SparseSet
