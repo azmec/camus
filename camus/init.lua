@@ -40,6 +40,7 @@ local populateNamespace = function(namespace)
     namespace.EntityIndex    = require(PATH .. '.entity-index')
     namespace.ComponentArray = require(PATH .. '.component-array')
     namespace.System         = require(PATH .. '.system')
+    namespace.Context        = require(PATH .. '.context')
     namespace.Utils          = require(PATH .. '.utils')
 end
 
