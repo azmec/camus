@@ -15,7 +15,7 @@ EntityIndex.new = function()
         entities  = SparseSet.new(),
         destroyed = Stack.new(),
         living    = 0
-    })
+    }, EntityIndex.__mt)
 end
 
 --- Returns true/false if the entity is in the EntityIndex.
@@ -47,7 +47,7 @@ end
 
 --- Removes the given entity from the EntityIndex.
 -- @param entity number
-EntityIndex.destroyEntity(entity) = function(entity)
+EntityIndex.destroyEntity = function(self, entity)
     if self.living <= 0 or self.entities:has(entity) then return end
 
     self.entities:remove(entity)
