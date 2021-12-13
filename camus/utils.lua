@@ -14,7 +14,7 @@ utils.packDirectory = function(path, t)
         error(
             string.format(
                 "bad argument #1 to '%s' (path '%s' not found)",
-                e.getUserCalledFunctionName()
+                e.getUserCalledFunctionName(),
                 path
             ),
             e.getUserErrorLevel()
@@ -33,5 +33,38 @@ utils.packDirectory = function(path, t)
 
     return t
 end
+
+utils.loadDirectory = function(path, t)
+    if not t then t = {} end
+
+    e.checkArgument(1, path, "string")
+    e.checkArgument(2, t, "table")
+
+    local info = love.filesystem.getInfo(path)
+    if info == nil or info.type ~= 'directory' then
+        error(
+            string.format(
+                "bad argument #1 to '%s' (path '%s' not found)",
+                e.getUserCalledFunctionName(),
+                path
+            ),
+            e.getUserErrorLevel()
+        )
+    end
+
+    local files = love.filesystem.getDirectoryItems(path)
+
+    for i = 1, #files do
+        local file      = files[i]
+        local name      = file:sub(1, #file - 4) -- removing ".lua"
+        local file_path = path .. '.' .. name
+        local value     = require(file_path)
+
+        t[name] = value
+    end
+
+    return t
+end
+
 
 return utils
