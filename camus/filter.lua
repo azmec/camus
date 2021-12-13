@@ -19,7 +19,7 @@ Filter.__mt = { __index = Filter }
 -- @see Context:getComponentList
 -- @return Filter
 Filter.new = function(components, ...)
-    local required, ids = pack(...), {}
+    local required, ids = {...}, {}
     for i = 1, #required do
         local id = components[required[i]]
         if id ~= nil then ids[i] = id end

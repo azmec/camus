@@ -8,7 +8,7 @@ local SparseSet      = require(PATH .. '.sparse-set')
 local EntityIndex    = require(PATH .. '.entity-index')
 local ComponentArray = require(PATH .. '.component-array')
 local System         = require(PATH .. '.system')
-local Signature      = require(PATH .. 'signature')
+local Signature      = require(PATH .. '.signature')
 local Filter         = require(PATH .. '.filter')
 
 local Context = {}
@@ -59,7 +59,7 @@ local componentRegistered = function(self, component)
             string.format(
                 "bad component given in '%s' (component '%s' not registered with Context)",
                 e.getUserCalledFunctionName(),
-                component,
+                component
             ),
             e.getUserErrorLevel()
         )
@@ -71,13 +71,13 @@ end
 -- @param table component
 -- @return string The name of the component.
 -- @return function The constructor of the component.
-local validateComponent = function(component)
+local validateComponent = function(self, component)
     local name, constructor = component[1], component[2]
     if type(name) ~= 'string' then
         error(
             string.format(
                 "bad component given in '%s' (expected the name to be a string, got %s)",
-                'registerComponent',
+                e.getUserCalledFunctionName(),
                 type(name)
             ),
             e.getUserErrorLevel()
@@ -115,7 +115,7 @@ Context.registerComponent = function(self, component)
     e.checkArgument(1, component, 'table')
     name, constructor = validateComponent(self, component)
 
-    local id = #self.components + 1
+    local id = #self.componentSets + 1
     self.components[name]  = id 
     self.componentSets[id] = ComponentArray.new(constructor)
 end
@@ -142,7 +142,7 @@ Context.registerSystem = function(self, system)
     -- or not. That information is known only to the Context.
     --]]
     system.context = self
-    system.filter = Filter.new(self.components, unpack(system.required))
+    system.filter = Filter.new(self.components, system.required)
     for entity in self:entities() do
         system:evaluate(entity, self.signatures[entity])
     end
@@ -154,7 +154,9 @@ end
 -- @param t table
 Context.registerSystems = function(self, t)
     e.checkArgument(1, t, 'table')
-    for i = 1, #t do self:registerSystem(t[i]) end
+    for i = 1, #t do 
+        self:registerSystem(t[i]) 
+    end
 end
 
 --- Registers a new entity and returns its ID.
@@ -172,7 +174,7 @@ end
 -- @param entity number
 Context.destroy = function(entity)
     if self.entityIndex:isAlive(entity) then
-        self.toDelete:insert(entity)
+        self.toDelete:add(entity)
     end
 end
 
@@ -219,13 +221,13 @@ end
 Context.give = function(self, entity, component, ...)
     e.checkArgument(1, entity, 'number')
     e.checkArgument(2, component, 'string')
-    if entityAlive(entity) and componentRegistered(component) then
+    if entityAlive(self, entity) and componentRegistered(self, component) then
         local component_id = self.components[component]
         local signature    = self.signatures[entity]
 
         signature:setComponent(component_id)
-        self.dirty:insert(entity)
-        self.componentSets[component_id]:constuct(entity, ...)
+        self.dirty:add(entity)
+        self.componentSets[component_id]:construct(entity, ...)
     end
 end
 
@@ -235,12 +237,12 @@ end
 Context.take = function(self, entity, component)
     e.checkArgument(1, entity, 'number')
     e.checkArgument(2, component, 'string')
-    if entityAlive(entity) and componentRegistered(component) then
+    if entityAlive(self, entity) and componentRegistered(self, component) then
         local component_id = self.components[component]
         local signature    = self.signatures[entity]
 
         signature:clearComponent(component_id)
-        self.dirty:insert(entity)
+        self.dirty:add(entity)
         self.componentSets[component_id]:destroy(entity)
     end
 end
@@ -250,7 +252,8 @@ end
 Context.emit = function(self, event, ...)
     e.checkArgument(1, event, 'string')
     for i = 1, #self.systems do
-        if not system:isEnabled()
+        local system = self.systems[i]
+        if system:isEnabled()
         and system[event] and type(system[event] == 'function') then
             system[event](system, ...)
         end
@@ -266,7 +269,7 @@ end
 -- @param string component
 -- @return bool
 Context.hasComponent = function(self, entity, component)
-    if entityAlive(entity) and componentRegistered(component) then
+    if entityAlive(self, entity) and componentRegistered(self, component) then
         local component_id = self.components[component]
         local signature    = self.signatures[entity]
         return signature:hasComponent(component_id)
@@ -278,8 +281,8 @@ end
 -- @param string component
 -- @param Variant
 Context.getComponent = function(self, entity, component)
-    if entityAlive(entity) and componentRegistered(component) then
-        return self.componentsSets[self.components[component]]:peak(entity)
+    if entityAlive(self, entity) and componentRegistered(self, component) then
+        return self.componentSets[self.components[component]]:peak(entity)
     end
 end
 
@@ -290,7 +293,7 @@ end
 Context.getComponents = function(self, entity, ...)
     local components = {...}
     local res = {}
-    if entityAlive(entity) then
+    if entityAlive(self, entity) then
         for i = 1, #components do
             if componentRegistered(components[i]) then
                 res[i] = self.componentsSets[self.components[component]]:peak(entity)
@@ -313,7 +316,7 @@ Context.getGroup = function(self, name)
             string.format(
                 "bad group '%s' in '%s' (group not registered)",
                 name,
-                e.getUserCalledFunctionName(),
+                e.getUserCalledFunctionName()
             ),
             e.getUserErrorLevel()
         )

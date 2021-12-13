@@ -2,7 +2,7 @@
 -- @classmod Signature
 
 -- If unit testing with `busted`, change to "bit32."
-local bit = require 'bit32'
+local bit = require 'bit'
 
 local band, bor, bnot = bit.band, bit.bor, bit.bnot
 local lshift, rshift  = bit.lshift, bit.rshift
@@ -107,7 +107,7 @@ end
 --- Sets multiple components within the Signature.
 -- @param ... number
 Signature.setComponents = function(self, ...)
-    local components = pack(...)
+    local components = {...}
     for i = 1, #components do 
         self:setComponents(components[i]) 
     end
