@@ -47,13 +47,13 @@ end
 -- @param signature table Signature of the entity.
 System.evaluate = function(self, entity, signature)
     local filter, pool = self.filter, self.pool
-    local in_pool      = pool:contains(entity)
+    local in_pool      = pool:has(entity)
     local is_match     = filter:match(signature)
     
     if not in_pool and not is_match then
         return
     elseif not in_pool and is_match then
-        pool:insert(entity)
+        pool:add(entity)
         self:onEntityAdded(entity)
     elseif not is_match and in_pool then
         pool:remove(entity)
