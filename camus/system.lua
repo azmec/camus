@@ -24,7 +24,7 @@ System.new = function(...)
         -- Context to function properly.
         filter  = nil,
         context = nil
-    })
+    }, System.__mt)
 end
 
 --- Closured iterator which returns the next entity in the list.
@@ -61,6 +61,14 @@ System.evaluate = function(self, entity, signature)
     end
 end
 
+--- Returns the specified component of the given entity.
+-- @param number entity
+-- @param string component
+-- @return Variant
+System.getComponent = function(self, entity, component)
+    return self.context:getComponent(entity, component)
+end
+
 --- Removes the given entity from the System.
 -- @param entity number Entity to evaluate.
 System.remove = function(self, entity)
@@ -73,7 +81,7 @@ System.setEnabled = function(self, value) self.enabled = value end
 
 --- Return if the System is enabled.
 -- @return bool
-System.enabled = function(self) return self.enabled end
+System.isEnabled = function(self) return self.enabled end
 
 --- Returns the names of the System's required components.
 -- @return table List of the required components names.
