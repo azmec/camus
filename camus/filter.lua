@@ -37,7 +37,7 @@ end
 -- @param other Signature
 -- @return bool
 Filter.match = function(self, other)
-    return self.signature:isSubsetOf(other) end
+    return self.signature:isSubsetOf(other)
 end
 
 return setmetatable(Filter, {
