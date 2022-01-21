@@ -1,6 +1,7 @@
---- SUMMARY
+--- Psuedo-bitset implementation to generate Component signatures.
 -- @classmod Signature
 
+-- NOTE:
 -- If unit testing with `busted`, change to "bit32."
 local bit = require 'bit32'
 
@@ -8,6 +9,7 @@ local band, bor, bnot = bit.band, bit.bor, bit.bnot
 local lshift, rshift  = bit.lshift, bit.rshift
 local min, floor      = math.min, math.floor
 
+-- NOTE:
 -- If unit testing with `busted`, comment function
 -- delcaration out and localization in.
 local pack = function(...) return { ... } end
@@ -28,32 +30,32 @@ local NUM_BITS = 32
 local Signature = {}
 Signature.__mt = { __index = Signature }
 
---- Constructs a new Signature.
--- @return Signature
+--- Construct a new Signature.
+-- @treturn Signature
 Signature.new = function()
     return setmetatable({ 0 }, Signature.__mt)
 end
 
---- Sets the ith bit in the given number.
--- @param x number
--- @param i number
--- @return number
+--- Set the ith bit in the number and return it.
+-- @tparam number x 
+-- @tparam number i 
+-- @treturn number The given number with the ith bit set.
 local setBit = function(x, i) return bor(x, lshift(1, i)) end
 
---- Clears the ith bit in the given number.
--- @param x number
--- @param i number
--- @return number
+--- Clear the ith bit in the number and return it.
+-- @tparam number x 
+-- @tparam number i 
+-- @treturn number The given number with the ith bit cleared.
 local clearBit = function(x, i) return band(x, bnot(lshift(1, i))) end
 
---- Checks if the ith bit in the given number is set.
--- @param x number
--- @param i number
--- @return number
+--- Return if the ith bit in the number is set.
+-- @tparam number x 
+-- @tparam number i 
+-- @treturn bool If the ith bit is set.
 local bitIsSet = function(x, i) return band(rshift(x, i), 1) ~= 0 end
 
---- Sets the component within the Signature.
--- @param i number
+--- Set the component within the Signature.
+-- @tparam number i 
 Signature.setComponent = function(self, i)
     local index = floor(i / NUM_BITS) + 1
     if index > #self then
@@ -64,8 +66,8 @@ Signature.setComponent = function(self, i)
     self[index] = setBit(self[index], i)
 end
 
---- Clears the component within the Signature.
--- @param i number
+--- Clear the component within the Signature.
+-- @tparam number i 
 Signature.clearComponent = function(self, i)
     local index = floor(i / NUM_BITS) + 1
     if index > #self then return end
@@ -74,9 +76,9 @@ Signature.clearComponent = function(self, i)
     self[index] = clearBit(self[index], i)
 end
 
---- Checks if the Signature has the component.
--- @param i number
--- @return bool
+--- Return if the Signature has the component.
+-- @tparam number i 
+-- @treturn bool If the Signature has the component.
 Signature.hasComponent = function(self, i)
     local index = floor(i / NUM_BITS) + 1
     if index > #self then return false end
@@ -85,9 +87,9 @@ Signature.hasComponent = function(self, i)
     return bitIsSet(self[index], i)
 end
 
---- Checks if the Signature is a subset of the other.
--- @param other Signature
--- @return bool
+--- Return if the Signature is a subset of the other.
+-- @tparam other Signature Signature to check if it is a "super" set.
+-- @treturn bool If the Signature is a subset of the other.
 Signature.isSubsetOf = function(self, other)
     local count = min(#self, #other)
     if #self > count then
@@ -104,8 +106,8 @@ Signature.isSubsetOf = function(self, other)
     return true
 end
 
---- Sets multiple components within the Signature.
--- @param ... number
+--- Set multiple components within the Signature.
+-- @tparam number ... Components to set.
 Signature.setComponents = function(self, ...)
     local components = pack(...)
     for k = 1, #components do 
