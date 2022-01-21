@@ -36,26 +36,26 @@ Signature.new = function()
     return setmetatable({ 0 }, Signature.__mt)
 end
 
---- Set the ith bit in the number and return it.
--- @tparam number x 
--- @tparam number i 
--- @treturn number The given number with the ith bit set.
+--- Set the ith bit in the integer and return it.
+-- @tparam int x 
+-- @tparam int i 
+-- @treturn int The given integer with the ith bit set.
 local setBit = function(x, i) return bor(x, lshift(1, i)) end
 
---- Clear the ith bit in the number and return it.
--- @tparam number x 
--- @tparam number i 
--- @treturn number The given number with the ith bit cleared.
+--- Clear the ith bit in the integer and return it.
+-- @tparam int x 
+-- @tparam int i 
+-- @treturn int The given integer with the ith bit cleared.
 local clearBit = function(x, i) return band(x, bnot(lshift(1, i))) end
 
---- Return if the ith bit in the number is set.
--- @tparam number x 
--- @tparam number i 
+--- Return if the ith bit in the integer is set.
+-- @tparam int x 
+-- @tparam int i 
 -- @treturn bool If the ith bit is set.
 local bitIsSet = function(x, i) return band(rshift(x, i), 1) ~= 0 end
 
 --- Set the component within the Signature.
--- @tparam number i 
+-- @tparam int i 
 Signature.setComponent = function(self, i)
     local index = floor(i / NUM_BITS) + 1
     if index > #self then
@@ -67,7 +67,7 @@ Signature.setComponent = function(self, i)
 end
 
 --- Clear the component within the Signature.
--- @tparam number i 
+-- @tparam int i 
 Signature.clearComponent = function(self, i)
     local index = floor(i / NUM_BITS) + 1
     if index > #self then return end
@@ -77,7 +77,7 @@ Signature.clearComponent = function(self, i)
 end
 
 --- Return if the Signature has the component.
--- @tparam number i 
+-- @tparam int i 
 -- @treturn bool If the Signature has the component.
 Signature.hasComponent = function(self, i)
     local index = floor(i / NUM_BITS) + 1
@@ -107,7 +107,7 @@ Signature.isSubsetOf = function(self, other)
 end
 
 --- Set multiple components within the Signature.
--- @tparam number ... Components to set.
+-- @tparam int ... Components to set.
 Signature.setComponents = function(self, ...)
     local components = pack(...)
     for k = 1, #components do 
