@@ -1,10 +1,15 @@
---- Object to quickly generate and match Signatures based
--- on given components.
+--- Interface containing a Signature and ability to "match" it with others.
+-- This class is intended to be handled exclusively by the Context and not 
+-- by any users. However, using it outside "that context" can be trivial.
+-- Filters require a list of *known* or *valid* components to check 
+-- against, and this list can be obtained through the Context's
+-- `getComponentList()` method.
 -- @classmod Filter
 
 local PATH      = (...):gsub('%.[^%.]+$', '')
 local Signature = require(PATH .. '.signature')
 
+-- NOTE:
 -- If unit testing with `busted`, comment function
 -- delcaration out and localization in.
 local pack = function(...) return { ... } end
@@ -13,11 +18,11 @@ local pack = function(...) return { ... } end
 local Filter = {}
 Filter.__mt = { __index = Filter }
 
---- Constructs a new Filter.
--- @param components table Array of valid compnent IDs.
--- @param ... string Components to filter for.
+--- Construct a new Filter.
+-- @tparam table components Array of known component IDs.
+-- @tparam string ... Components to generate a Signature from.
 -- @see Context:getComponentList
--- @return Filter
+-- @treturn Filter
 Filter.new = function(components, ...)
     local required, ids = {...}, {}
     for i = 1, #required do
@@ -33,9 +38,10 @@ Filter.new = function(components, ...)
     }, Filter.__mt)
 end
 
---- Checks if the given Signature matches that of the Filter.
--- @param other Signature
--- @return bool
+-- TODO: Be more specific about the matching relationship.
+--- Return if the other Signature matches Filter's.
+-- @tparam Signature other The Signature to match against.
+-- @treturn bool If the other Signature matches the Filter's.
 Filter.match = function(self, other)
     return self.signature:isSubsetOf(other)
 end
