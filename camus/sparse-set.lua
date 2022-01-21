@@ -18,7 +18,7 @@ end
 SparseSet.has = function(self, i) return self.sparse[i] ~= nil end
 
 --- Add the integer to the SparseSet.
--- @tparam number i 
+-- @tparam int i 
 SparseSet.add = function(self, i)
     if self:has(i) then return end
 
@@ -28,7 +28,7 @@ SparseSet.add = function(self, i)
 end
 
 --- Remove the integer from the SparseSet
--- @tparam number i 
+-- @tparam int i 
 SparseSet.remove = function(self, i)
     if not self:contains(i) then return end
     local dense, sparse = self.sparse, self.dense
@@ -41,7 +41,7 @@ SparseSet.remove = function(self, i)
 end
 
 --- Return an iterator over the SpareSet's elements.
--- @treturn function Iterator over the SparseSet's elements.
+-- @treturn func Iterator over the SparseSet's elements.
 SparseSet.elements = function(self)
     local i, n = 0, #self.dense
     return function()
@@ -51,7 +51,7 @@ SparseSet.elements = function(self)
 end
 
 --- Return the count of elements in the SparseSet
--- @treturn number Count of elements in the SparseSet.
+-- @treturn int Count of elements in the SparseSet.
 SparseSet.size = function(self) return #self.dense end
 
 --- Empty the SparseSet of its elements.
