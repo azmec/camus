@@ -1,4 +1,4 @@
---- SUMMARY
+--- Structure mainting a list of all living and destroyed entities.
 -- @classmod EntityIndex
 
 local PATH      = (...):gsub('%.[^%.]+$', '')
@@ -8,8 +8,8 @@ local Stack     = require(PATH .. '.stack')
 local EntityIndex = {}
 EntityIndex.__mt = { __index = EntityIndex }
 
---- Constructs an EntityIndex.
--- @return EntityIndex
+--- Construct an EntityIndex.
+-- @treturn EntityIndex
 EntityIndex.new = function()
     return setmetatable({
         entities  = SparseSet.new(),
@@ -18,17 +18,17 @@ EntityIndex.new = function()
     }, EntityIndex.__mt)
 end
 
---- Returns true/false if the entity is in the EntityIndex.
--- @param entity number
--- @return bool
+--- Return if the entity is in the EntityIndex.
+-- @tparam number entity An entity's ID. 
+-- @treturn bool If the entity is in the EntityIndex.
 EntityIndex.isAlive = function(self, entity)
     return self.entities:has(entity)
 end
 
---- Creates a new entity and returns its ID.
+--- Create a new entity and return its ID.
 -- Note that the ID could be the same as a previously destroyed
 -- entity, as the EntityIndex recycles past IDs.
--- @return number
+-- @treturn number The entity's ID.
 EntityIndex.createEntity = function(self)
     local id = nil
     -- Recycle the ID of the most recently destroyed 
@@ -45,8 +45,8 @@ EntityIndex.createEntity = function(self)
     return id
 end
 
---- Removes the given entity from the EntityIndex.
--- @param entity number
+--- Remove the entity from the EntityIndex.
+-- @tparam number entity An entity's ID.
 EntityIndex.destroyEntity = function(self, entity)
     if self.living <= 0 or self.entities:has(entity) then return end
 
