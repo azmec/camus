@@ -19,7 +19,7 @@ EntityIndex.new = function()
 end
 
 --- Return if the entity is in the EntityIndex.
--- @tparam number entity An entity's ID. 
+-- @tparam int entity An entity's ID. 
 -- @treturn bool If the entity is in the EntityIndex.
 EntityIndex.isAlive = function(self, entity)
     return self.entities:has(entity)
@@ -28,7 +28,7 @@ end
 --- Create a new entity and return its ID.
 -- Note that the ID could be the same as a previously destroyed
 -- entity, as the EntityIndex recycles past IDs.
--- @treturn number The entity's ID.
+-- @treturn int The entity's ID.
 EntityIndex.createEntity = function(self)
     local id = nil
     -- Recycle the ID of the most recently destroyed 
@@ -46,7 +46,7 @@ EntityIndex.createEntity = function(self)
 end
 
 --- Remove the entity from the EntityIndex.
--- @tparam number entity An entity's ID.
+-- @tparam int entity An entity's ID.
 EntityIndex.destroyEntity = function(self, entity)
     if self.living <= 0 or self.entities:has(entity) then return end
 
