@@ -1,4 +1,4 @@
---- Iterable collection of entities with a matching Signature.
+--- Iterable collection of entities.
 -- @classmod System
 
 local PATH      = (...):gsub('%.[^%.]+$', '')
@@ -9,10 +9,9 @@ System.__mt = { __index = System }
 
 local pack = function(...) return {...} end
 
---- Contructs a new System.
--- An interable collection of entities.
--- @param ... string Names of the components to match for.
--- @return System
+--- Contruct a new System.
+-- @tparam string ... Names of the components to match for.
+-- @treturn System
 System.new = function(...)
     return setmetatable({
         required = pack(...),
@@ -27,8 +26,8 @@ System.new = function(...)
     }, System.__mt)
 end
 
---- Closured iterator which returns the next entity in the list.
--- @return function
+--- Return an iterator over the System's entities.
+-- @treturn func Iterator over the System's entities.
 System.entities = function(self)
     local pool    = self.pool
     local i, size = 0, pool:size()
@@ -38,13 +37,12 @@ System.entities = function(self)
     end
 end
 
---- Check if the given entity should be within the System.
--- Note that this method is THE way to add entities.
--- If the entity's signature matches the System's, it's added
--- if not already in it; if it doesn't, it's removed if in the
--- System.
--- @param entity number Entity to evaluate
--- @param signature table Signature of the entity.
+--- Return if the given entity should be within the System.
+-- Note that this method proxies as a way to add entities. If the entity's
+-- signature matches that of the System's, it is added to the System; if 
+-- the entity is already in the system and no longer matches, it's removed.
+-- @tparam int entity Entity to evaluate
+-- @tparam tab signature Signature of the entity.
 System.evaluate = function(self, entity, signature)
     local filter, pool = self.filter, self.pool
     local in_pool      = pool:has(entity)
@@ -61,34 +59,34 @@ System.evaluate = function(self, entity, signature)
     end
 end
 
---- Returns the specified component of the given entity.
--- @param number entity
--- @param string component
--- @return Variant
+--- Return the specified component of the entity.
+-- @tparam int entity The entity's ID.
+-- @tparam string component String identifier for the component.
+-- @treturn ... Data unique to the component.
 System.getComponent = function(self, entity, component)
     return self.context:getComponent(entity, component)
 end
 
---- Removes the given entity from the System.
--- @param entity number Entity to evaluate.
+--- Remove the entity from the System.
+-- @tparam number entity The entity's ID.
 System.remove = function(self, entity)
     self.pool:remove(entity)
 end
 
---- Set if the System is processing or not.
--- @value bool value
+--- Set if the System is processing.
+-- @tparam bool value If the System should be processing.
 System.setEnabled = function(self, value) self.enabled = value end
 
---- Return if the System is enabled.
--- @return bool
+--- Return if the System is processing.
+-- @treturn bool If the System is processing.
 System.isEnabled = function(self) return self.enabled end
 
 --- Returns the names of the System's required components.
--- @return table List of the required components names.
+-- @treturn {string, ...} Table of the required components' identifiers.
 System.getRequired = function(self) return self.required end
 
 --- Callback for when the System is added to the Context.
--- @param Context context
+-- @tparam Context context Context to which the System was added to.
 System.init = function(self, context)
 end
 
@@ -100,12 +98,12 @@ end
 System.onDisabled = function(self)
 end
 
---- Callback for whenever an entity is added to the system.
--- @param entity number The added entity.
+--- Callback for whenever an entity is added to the System.
+-- @tparam entity number The added entity's ID.
 System.onEntityAdded  = function(self, entity) end
 
---- Callback for whenever an entity is removed from the system.
--- @param entity number The removed entity.
+--- Callback for whenever an entity is removed from the System.
+-- @tparam entity number The removed entity's ID.
 System.onEntityRemoved= function(self, entity) end
 
 return setmetatable(System, {
