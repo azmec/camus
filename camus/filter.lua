@@ -19,7 +19,7 @@ local Filter = {}
 Filter.__mt = { __index = Filter }
 
 --- Construct a new Filter.
--- @tparam table components Array of known component IDs.
+-- @tparam {int, ...} components Array of known component IDs.
 -- @tparam string ... Components to generate a Signature from.
 -- @see Context:getComponentList
 -- @treturn Filter
