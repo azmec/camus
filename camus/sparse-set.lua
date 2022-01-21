@@ -4,8 +4,8 @@
 local SparseSet = {}
 SparseSet.__mt = { __index = SparseSet }
 
---- Constructs a new SparseSet.
--- @return SparseSet
+--- Construct a new SparseSet.
+-- @treturn SparseSet
 SparseSet.new = function()
     return setmetatable({
         sparse = {},
@@ -13,12 +13,12 @@ SparseSet.new = function()
     }, SparseSet.__mt)
 end
 
---- Returns true/false if the SparseSet contains the given integer.
--- @return bool
+--- Return if the SparseSet contains the integer.
+-- @treturn bool If the SparseSet contains the integer.
 SparseSet.has = function(self, i) return self.sparse[i] ~= nil end
 
---- Adds the given integer to the SparseSet.
--- @param i number
+--- Add the integer to the SparseSet.
+-- @tparam number i 
 SparseSet.add = function(self, i)
     if self:has(i) then return end
 
@@ -27,8 +27,8 @@ SparseSet.add = function(self, i)
     self.sparse[i]    = index
 end
 
---- Removes the given integer from the SparseSet
--- @param i number
+--- Remove the integer from the SparseSet
+-- @tparam number i 
 SparseSet.remove = function(self, i)
     if not self:contains(i) then return end
     local dense, sparse = self.sparse, self.dense
@@ -40,8 +40,8 @@ SparseSet.remove = function(self, i)
     sparse[element]  = nil
 end
 
---- Returns an iterator over the elements of the SparseSet.
--- @return function
+--- Return an iterator over the SpareSet's elements.
+-- @treturn function Iterator over the SparseSet's elements.
 SparseSet.elements = function(self)
     local i, n = 0, #self.dense
     return function()
@@ -50,11 +50,11 @@ SparseSet.elements = function(self)
     end
 end
 
---- Returns the count of elements in the SparseSet
--- @return number
+--- Return the count of elements in the SparseSet
+-- @treturn number Count of elements in the SparseSet.
 SparseSet.size = function(self) return #self.dense end
 
---- Empties the SparseSet.
+--- Empty the SparseSet of its elements.
 SparseSet.clear = function(self)
     self.sparse = {}
     self.dense  = {}
