@@ -14,8 +14,8 @@ local Filter         = require(PATH .. '.filter')
 local Context = {}
 Context.__mt = { __index = Context }
 
--- Constructs a new Context.
--- @return Context
+-- Construct a new Context.
+-- @treturn Context
 Context.new = function()
     return setmetatable({
         entityIndex = EntityIndex.new(), 
@@ -51,8 +51,8 @@ local entityAlive = function(self, entity)
     end
 end
 
---- Checks if the component is registered with the Context.
--- @param string component
+--- Return if the component is registered with the Context.
+-- @tparam string component String identifier for the component.
 local componentRegistered = function(self, component)
     if not self.components[component] then
         error(
@@ -68,9 +68,9 @@ local componentRegistered = function(self, component)
 end
 
 --- Checks the type of the component and its elements.
--- @param table component
--- @return string The name of the component.
--- @return function The constructor of the component.
+-- @tparam tab component
+-- @treturn string The name of the component.
+-- @treturn func The constructor of the component.
 local validateComponent = function(self, component)
     local name, constructor = component[1], component[2]
     if type(name) ~= 'string' then
@@ -109,8 +109,8 @@ local validateComponent = function(self, component)
     return name, constructor
 end
 
---- Registers the given component with the Context.
--- @param component table
+--- Register the component with the Context.
+-- @tparam tab component The initializing component table.
 Context.registerComponent = function(self, component)
     e.checkArgument(1, component, 'table')
     name, constructor = validateComponent(self, component)
@@ -120,8 +120,8 @@ Context.registerComponent = function(self, component)
     self.componentSets[id] = ComponentArray.new(constructor)
 end
 
---- Registers multiple components with the Context.
--- @param t table
+--- Register multiple components with the Context.
+-- @tparam {tab, ...} t Table of components to register.
 Context.registerComponents = function(self, t)
     e.checkArgument(1, t, 'table')
     for i = 1, #t do
@@ -130,8 +130,8 @@ Context.registerComponents = function(self, t)
     end
 end
 
---- Registers the given System with the Context.
--- @param system System
+--- Register the System with the Context.
+-- @tparam System system System to register.
 Context.registerSystem = function(self, system)
     e.checkArgument(1, system, 'table')
 
@@ -150,8 +150,8 @@ Context.registerSystem = function(self, system)
     self.systems[#self.systems + 1] = system
 end
 
---- Registers multiple Systems with the Context.
--- @param t table
+--- Register multiple Systems with the Context.
+-- @tparam {System, ...} t Table of Systems to register.
 Context.registerSystems = function(self, t)
     e.checkArgument(1, t, 'table')
     for i = 1, #t do 
@@ -159,8 +159,8 @@ Context.registerSystems = function(self, t)
     end
 end
 
---- Registers a new entity and returns its ID.
--- @return number
+--- Register a new entity and returns its ID.
+-- @treturn int The entity's ID.
 Context.entity = function(self)
     local id = self.entityIndex:createEntity()
     self.signatures[id] = Signature.new()
@@ -169,16 +169,16 @@ Context.entity = function(self)
     return id
 end
 
---- Destroys the given entity.
--- Note that the entity "exists" until the next `:flush()` call.
--- @param entity number
+--- Destroy the entity.
+-- Note that the entity exists until the next `:flush()` call.
+-- @tparam int entity The entity's ID.
 Context.destroy = function(entity)
     if self.entityIndex:isAlive(entity) then
         self.toDelete:add(entity)
     end
 end
 
---- Evaluates and flushes changes to entities.
+--- Evaluate and flush changes to entities.
 Context.flush = function(self)
     -- Check the relevent lists; if they're empty, nothing changed
     -- from the previous update so there's nothing to flush.
@@ -214,10 +214,10 @@ Context.flush = function(self)
     dirty:clear()
 end
 
---- Gives the component to the entity.
--- @param entity number
--- @param component string
--- @param ... Component constructor arguments.
+--- Give the specified component to the entity.
+-- @tparam int entity The entity's ID.
+-- @tparam string component The component's string identifier.
+-- @tparam ... ... Contrusctor arguments unique to the component.
 Context.give = function(self, entity, component, ...)
     e.checkArgument(1, entity, 'number')
     e.checkArgument(2, component, 'string')
@@ -231,9 +231,9 @@ Context.give = function(self, entity, component, ...)
     end
 end
 
---- Takes the component from the entity.
--- @param entity number
--- @param component string
+--- Remove the specified component from the entity.
+-- @tparam int entity The entity's ID.
+-- @tparam string component The component's string identifier.
 Context.take = function(self, entity, component)
     e.checkArgument(1, entity, 'number')
     e.checkArgument(2, component, 'string')
@@ -247,8 +247,8 @@ Context.take = function(self, entity, component)
     end
 end
 
---- Emits the specified event across all systems.
--- @param string event
+--- Emit the specified event across all systems.
+-- @tparam string event The event's string identifier.
 Context.emit = function(self, event, ...)
     e.checkArgument(1, event, 'string')
     for i = 1, #self.systems do
@@ -264,10 +264,10 @@ end
 -- QUERIES
 -- =======
 
---- Checks if the given entity has the specified component.
--- @param number entity
--- @param string component
--- @return bool
+--- Return if the entity has the specified component.
+-- @tparam int entity The entity's ID.
+-- @tparam string component The component's string identifier.
+-- @treturn bool If the entity has the specified component.
 Context.hasComponent = function(self, entity, component)
     if entityAlive(self, entity) and componentRegistered(self, component) then
         local component_id = self.components[component]
@@ -276,20 +276,20 @@ Context.hasComponent = function(self, entity, component)
     end
 end
 
---- Returns the specified component data of the given entity.
--- @param number entity
--- @param string component
--- @param Variant
+--- Return the specified component data of the entity.
+-- @tparam int entity The entity's ID.
+-- @tparam string component The component's string identifier.
+-- @tparam ... Data unique to the specified component.
 Context.getComponent = function(self, entity, component)
     if entityAlive(self, entity) and componentRegistered(self, component) then
         return self.componentSets[self.components[component]]:peak(entity)
     end
 end
 
---- Returns the data of the specified components of the given entity.
--- @param number entity
--- @param string ...
--- @return Variant
+--- Return the data of the specified components of the entity.
+-- @tparam int entity The entity's ID.
+-- @tparam string ... Loose list of components' string identifiers.
+-- @treturn ... Data unique to the specified components.
 Context.getComponents = function(self, entity, ...)
     local components = {...}
     local res = {}
@@ -304,9 +304,9 @@ Context.getComponents = function(self, entity, ...)
     return unpack(res)
 end
 
---- Returns the specified group.
--- @param string name
--- @return System
+--- Return the specified group.
+-- @tparam string name The group's string identifier.
+-- @treturn System
 Context.getGroup = function(self, name)
     e.checkArgument(1, name, 'string')
     if self.groupDictionary[name] then
@@ -323,25 +323,25 @@ Context.getGroup = function(self, name)
     end
 end
 
---- Returns the total count of registered components.
--- @return number
+--- Return the total count of registered components.
+-- @treturn int The count of registered components.
 Context.componentCount = function(self) return #self.components end
 
---- Returns the total count of registered Systems.
--- @return number
+--- Return the total count of registered Systems.
+-- @treturn int The count of registered Systems.
 Context.systemCount = function(self) return #self.systems end
 
---- Returns the count of living entities.
--- @return number
+--- Return the count of living entities.
+-- @treturn int The count of living entities.
 Context.entityCount = function(self) return self.entityIndex.entities:size() end
 
 -- =========================================================
 -- ADVANCED QUERIES. ONLY USE IF YOU KNOW WHAT YOU'RE DOING.
 -- ========================================================= 
 
---- Returns the numerical ID of the specified component.
--- @param component string
--- @return number
+--- Return the integer ID of the specified component.
+-- @tparam string component The component's string identifier.
+-- @treturn int The integer ID of the specified component.
 Context.getComponentID = function(self, component)
     e.checkArgument(1, component, 'string')
     if componentRegistered(self, component) then
@@ -349,22 +349,22 @@ Context.getComponentID = function(self, component)
     end
 end
 
---- Returns the ComponentArray of the specified component.
--- @param component string
--- @return ComponentArray
+--- Return the ComponentArray of the specified component.
+-- @tparam string component The component's string identifier.
+-- @treturn ComponentArray The ComponentArray of the specified component.
 Context.getComponentArray = function(self, component)
     e.checkArgument(1, component, 'string')
     local id = self:getComponentID(component)
     return self.componentSets[id]
 end
 
---- Returns the list of all registered components.
--- @return table
+--- Return the list of all registered components' string identifiers.
+-- @treturn {string, ...} List of registered components' string identifiers.
 Context.getComponentList = function(self) return self.components end
 
---- Returns the Signature of the specified entity.
--- @param entity number
--- @return Signature
+--- Return the Signature of the entity.
+-- @tparam int entity The entity's ID.
+-- @treturn Signature The entity's Signature.
 Context.getSignature = function(self, entity)
     if self.entityIndex:isAlive(entity) then
         return self.signatures[entity]
@@ -380,8 +380,8 @@ Context.getSignature = function(self, entity)
     end
 end
 
---- Returns an iterator traversing all living entities.
--- @return function
+--- Return an iterator traversing all living entities.
+-- @treturn func Iterator traversing all living entities.
 Context.entities = function(self)
     local dense = self.entityIndex.entities.dense
     local i, n  = 0, #dense
@@ -395,9 +395,9 @@ end
 -- UTILITIES
 -- =========
 
---- Shortcut to creating and registering a new component.
--- @param name string Name of the new component.
--- @param constructor function Constructor of component data.
+--- Create and register a new component.
+-- @tparam string name String identifier of the new component.
+-- @tparam func constructor Constructor function returning component data.
 Context.createComponent = function(self, name, constructor)
     e.checkArgument(1, name, 'string')
     e.checkArgument(2, constructor, 'function')
@@ -416,8 +416,8 @@ Context.createComponent = function(self, name, constructor)
     end
 end
 
---- Shortcut to creating and registering a new System.
--- @param ... Components to exclusively process with the System.
+--- Create and register a new System.
+-- @tparam ... Loose list of component string identifiers to match for.
 Context.createSystem = function(self, ...)
     components = {...}
     for i = 1, #components do
@@ -428,9 +428,9 @@ Context.createSystem = function(self, ...)
     self:registerSystem(system)
 end
 
---- Creates a new group which selects for the given components.
--- @param name string Name of the group.
--- @param ... string Components to select for.
+--- Create a new group matching for the given components.
+-- @tparam string name The group's string identifier.
+-- @tparam string ... Loose list of component string identifiers to match for.
 Context.createGroup = function(self, name, ...)
     e.checkArgument(1, name, 'string')
 
@@ -457,7 +457,7 @@ Context.createGroup = function(self, name, ...)
     self.groupDictionary[name] = id
 end
 
---- Removes everything from the Context, effectively making it new.
+--- Remove everything from the Context, effectively making it "like new".
 Context.clear = function(self)
     self.entityIndex = EntityIndex.new()
     self.components  = {}
@@ -474,12 +474,12 @@ Context.clear = function(self)
 end
 
 --- Callback for when an entity is added to the Context.
--- @param entity number
+-- @tparam int entity The entity's ID. 
 Context.onEntityAdded = function(self, entity)
 end
 
 --- Callback for when an entity is removed from the Context.
--- @param entity number
+-- @tparam int entity The entity's ID.
 Context.onEntityRemoved = function(self, entity)
 end
 
