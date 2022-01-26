@@ -35,6 +35,9 @@ Context.new = function()
     }, Context.__mt)
 end
 
+--- Return if the entity is alive.
+-- @tparam Context self
+-- @tparam int entity The entity's ID.
 local entityAlive = function(self, entity)
     if self.entityIndex:isAlive(entity) then
         return true
