@@ -14,10 +14,12 @@ SparseSet.new = function()
 end
 
 --- Return if the SparseSet contains the integer.
+-- @tparam SparseSet self
 -- @treturn bool If the SparseSet contains the integer.
 SparseSet.has = function(self, i) return self.sparse[i] ~= nil end
 
 --- Add the integer to the SparseSet.
+-- @tparam Signature self
 -- @tparam int i 
 SparseSet.add = function(self, i)
     if self:has(i) then return end
@@ -28,6 +30,7 @@ SparseSet.add = function(self, i)
 end
 
 --- Remove the integer from the SparseSet
+-- @tparam Signature self
 -- @tparam int i 
 SparseSet.remove = function(self, i)
     if not self:contains(i) then return end
@@ -41,6 +44,7 @@ SparseSet.remove = function(self, i)
 end
 
 --- Return an iterator over the SpareSet's elements.
+-- @tparam Signature self
 -- @treturn func Iterator over the SparseSet's elements.
 SparseSet.elements = function(self)
     local i, n = 0, #self.dense
@@ -51,10 +55,12 @@ SparseSet.elements = function(self)
 end
 
 --- Return the count of elements in the SparseSet
+-- @tparam Signature self
 -- @treturn int Count of elements in the SparseSet.
 SparseSet.size = function(self) return #self.dense end
 
 --- Empty the SparseSet of its elements.
+-- @tparam Signature self
 SparseSet.clear = function(self)
     self.sparse = {}
     self.dense  = {}

@@ -55,6 +55,7 @@ local clearBit = function(x, i) return band(x, bnot(lshift(1, i))) end
 local bitIsSet = function(x, i) return band(rshift(x, i), 1) ~= 0 end
 
 --- Set the component within the Signature.
+-- @tparam Signature self
 -- @tparam int i 
 Signature.setComponent = function(self, i)
     local index = floor(i / NUM_BITS) + 1
@@ -67,6 +68,7 @@ Signature.setComponent = function(self, i)
 end
 
 --- Clear the component within the Signature.
+-- @tparam Signature self
 -- @tparam int i 
 Signature.clearComponent = function(self, i)
     local index = floor(i / NUM_BITS) + 1
@@ -77,6 +79,7 @@ Signature.clearComponent = function(self, i)
 end
 
 --- Return if the Signature has the component.
+-- @tparam Signature self
 -- @tparam int i 
 -- @treturn bool If the Signature has the component.
 Signature.hasComponent = function(self, i)
@@ -88,6 +91,7 @@ Signature.hasComponent = function(self, i)
 end
 
 --- Return if the Signature is a subset of the other.
+-- @tparam Signature self
 -- @tparam other Signature Signature to check if it is a "super" set.
 -- @treturn bool If the Signature is a subset of the other.
 Signature.isSubsetOf = function(self, other)
@@ -107,6 +111,7 @@ Signature.isSubsetOf = function(self, other)
 end
 
 --- Set multiple components within the Signature.
+-- @tparam Signature self
 -- @tparam int ... Components to set.
 Signature.setComponents = function(self, ...)
     local components = pack(...)

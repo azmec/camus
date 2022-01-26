@@ -27,6 +27,7 @@ System.new = function(...)
 end
 
 --- Return an iterator over the System's entities.
+-- @tparam System self
 -- @treturn func Iterator over the System's entities.
 System.entities = function(self)
     local pool    = self.pool
@@ -41,6 +42,7 @@ end
 -- Note that this method proxies as a way to add entities. If the entity's
 -- signature matches that of the System's, it is added to the System; if 
 -- the entity is already in the system and no longer matches, it's removed.
+-- @tparam System self
 -- @tparam int entity Entity to evaluate
 -- @tparam tab signature Signature of the entity.
 System.evaluate = function(self, entity, signature)
@@ -60,6 +62,7 @@ System.evaluate = function(self, entity, signature)
 end
 
 --- Return the specified component of the entity.
+-- @tparam System self
 -- @tparam int entity The entity's ID.
 -- @tparam string component String identifier for the component.
 -- @treturn ... Data unique to the component.
@@ -68,41 +71,50 @@ System.getComponent = function(self, entity, component)
 end
 
 --- Remove the entity from the System.
+-- @tparam System self
 -- @tparam number entity The entity's ID.
 System.remove = function(self, entity)
     self.pool:remove(entity)
 end
 
 --- Set if the System is processing.
+-- @tparam System self
 -- @tparam bool value If the System should be processing.
 System.setEnabled = function(self, value) self.enabled = value end
 
 --- Return if the System is processing.
+-- @tparam System self
 -- @treturn bool If the System is processing.
 System.isEnabled = function(self) return self.enabled end
 
 --- Returns the names of the System's required components.
+-- @tparam System self
 -- @treturn {string, ...} Table of the required components' identifiers.
 System.getRequired = function(self) return self.required end
 
 --- Callback for when the System is added to the Context.
+-- @tparam System self
 -- @tparam Context context Context to which the System was added to.
 System.init = function(self, context)
 end
 
 --- Callback for when the System is enabled.
+-- @tparam System self
 System.onEnabled = function(self)
 end
 
 --- Callback for when the System is disabled.
+-- @tparam System self
 System.onDisabled = function(self)
 end
 
 --- Callback for whenever an entity is added to the System.
+-- @tparam System self
 -- @tparam entity number The added entity's ID.
 System.onEntityAdded  = function(self, entity) end
 
 --- Callback for whenever an entity is removed from the System.
+-- @tparam System self
 -- @tparam entity number The removed entity's ID.
 System.onEntityRemoved= function(self, entity) end
 

@@ -40,6 +40,7 @@ end
 
 -- TODO: Be more specific about the matching relationship.
 --- Return if the other Signature matches Filter's.
+-- @tparam Filter self
 -- @tparam Signature other The Signature to match against.
 -- @treturn bool If the other Signature matches the Filter's.
 Filter.match = function(self, other)

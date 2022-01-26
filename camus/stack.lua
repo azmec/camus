@@ -11,12 +11,14 @@ Stack.new = function()
 end
 
 --- Push an element onto the Stack.
+-- @tparam Stack self
 -- @tparam ... i Element of any type.
 Stack.push = function(self, i)
     self[#self + 1] = i
 end
 
 --- Pop the most recently pushed element off of the Stack.
+-- @tparam Stack self
 Stack.pop = function(self)
     e = self[#self]
     self[#self] = nil
@@ -24,6 +26,7 @@ Stack.pop = function(self)
 end
 
 --- Return the count of elements in the Stack.
+-- @tparam Stack self
 -- @treturn number Count of elements in the Stack.
 Stack.size = function(self)
     return #self
