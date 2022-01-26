@@ -175,7 +175,7 @@ end
 --- Destroy the entity.
 -- Note that the entity exists until the next `:flush()` call.
 -- @tparam int entity The entity's ID.
-Context.destroy = function(entity)
+Context.destroy = function(self, entity)
     if self.entityIndex:isAlive(entity) then
         self.toDelete:add(entity)
     end
