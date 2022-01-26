@@ -15,6 +15,7 @@ ComponentArray.new = function(constructor)
 end
 
 --- Construct a new component for the entity.
+-- @tparam ComponentArray self
 -- @tparam int entity An entity's ID.
 -- @tparam {...} ... Arguments unique to the constructor.
 ComponentArray.construct = function(self, entity, ...)
@@ -22,6 +23,7 @@ ComponentArray.construct = function(self, entity, ...)
 end
 
 --- Return the entity's component data.
+-- @tparam ComponentArray self
 -- @tparam int entity An entity's ID.
 -- @treturn {...} Data unique to the component.
 ComponentArray.peak = function(self, entity)
@@ -29,12 +31,14 @@ ComponentArray.peak = function(self, entity)
 end
 
 --- Destroy the component data of the given entity.
+-- @tparam ComponentArray self
 -- @tparam int entity An entity's ID.
 ComponentArray.destroy = function(self, entity)
     self.entities = nil
 end
     
 --- Returns if the entity has component data in this ComponentArray.
+-- @tparam ComponentArray self
 -- @tparam int entity An entity's ID.
 -- @treturn bool If the entity has this ComponentArray's component data.
 ComponentArray.has = function(self, entity)
