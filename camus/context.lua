@@ -128,7 +128,7 @@ end
 
 --- Register multiple components with the Context.
 -- @tparam Context self
--- @tparam {tab, ...} t Table of components to register.
+-- @tparam {tab} t Table of components to register.
 Context.registerComponents = function(self, t)
     e.checkArgument(1, t, 'table')
     for i = 1, #t do
@@ -160,7 +160,7 @@ end
 
 --- Register multiple Systems with the Context.
 -- @tparam Context self
--- @tparam {System, ...} t Table of Systems to register.
+-- @tparam {System} t Table of Systems to register.
 Context.registerSystems = function(self, t)
     e.checkArgument(1, t, 'table')
     for i = 1, #t do 
@@ -296,7 +296,7 @@ end
 -- @tparam Context self
 -- @tparam int entity The entity's ID.
 -- @tparam string component The component's string identifier.
--- @tparam ... Data unique to the specified component.
+-- @treturn ... Data unique to the specified component.
 Context.getComponent = function(self, entity, component)
     if entityAlive(self, entity) and componentRegistered(self, component) then
         return self.componentSets[self.components[component]]:peak(entity)

@@ -92,7 +92,7 @@ end
 
 --- Return if the Signature is a subset of the other.
 -- @tparam Signature self
--- @tparam other Signature Signature to check if it is a "super" set.
+-- @tparam Signature other Signature to check if it is a "super" set.
 -- @treturn bool If the Signature is a subset of the other.
 Signature.isSubsetOf = function(self, other)
     local count = min(#self, #other)

@@ -110,12 +110,12 @@ end
 
 --- Callback for whenever an entity is added to the System.
 -- @tparam System self
--- @tparam entity number The added entity's ID.
+-- @tparam number entity The added entity's ID.
 System.onEntityAdded  = function(self, entity) end
 
 --- Callback for whenever an entity is removed from the System.
 -- @tparam System self
--- @tparam entity number The removed entity's ID.
+-- @tparam number entity The removed entity's ID.
 System.onEntityRemoved= function(self, entity) end
 
 return setmetatable(System, {

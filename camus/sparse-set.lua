@@ -15,6 +15,7 @@ end
 
 --- Return if the SparseSet contains the integer.
 -- @tparam SparseSet self
+-- @tparam int i
 -- @treturn bool If the SparseSet contains the integer.
 SparseSet.has = function(self, i) return self.sparse[i] ~= nil end
 

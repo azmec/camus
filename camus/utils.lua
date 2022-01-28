@@ -1,3 +1,5 @@
+-- @mod Utilities
+
 local PATH = (...):gsub('%.[^%.]+$', '')
 local e    = require(PATH .. '.ensure')
 
