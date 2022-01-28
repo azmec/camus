@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/ComponentArray.html">ComponentArray</a></li>
+  <li><a href="../classes/Context.html">Context</a></li>
+  <li><a href="../classes/EntityIndex.html">EntityIndex</a></li>
+  <li><a href="../classes/Filter.html">Filter</a></li>
+  <li><a href="../classes/Signature.html">Signature</a></li>
+  <li><strong>SparseSet</strong></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ensure.html">ensure</a></li>
+  <li><a href="../modules/camus.html">camus</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>SparseSet</code></h1>
+<p>A data structure containing a sparse and dense integer array.</p>
+<p></p>
+
+
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#SparseSet:new">SparseSet:new ()</a></td>
+	<td class="summary">Construct a new SparseSet.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SparseSet:has">SparseSet:has (self, i)</a></td>
+	<td class="summary">Return if the SparseSet contains the integer.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SparseSet:add">SparseSet:add (self, i)</a></td>
+	<td class="summary">Add the integer to the SparseSet.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SparseSet:remove">SparseSet:remove (self, i)</a></td>
+	<td class="summary">Remove the integer from the SparseSet</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SparseSet:elements">SparseSet:elements (self)</a></td>
+	<td class="summary">Return an iterator over the SpareSet's elements.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SparseSet:size">SparseSet:size (self)</a></td>
+	<td class="summary">Return the count of elements in the SparseSet</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SparseSet:clear">SparseSet:clear (self)</a></td>
+	<td class="summary">Empty the SparseSet of its elements.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "SparseSet:new"></a>
+    <strong>SparseSet:new ()</strong>
+    </dt>
+    <dd>
+    Construct a new SparseSet.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/SparseSet.html#">SparseSet</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SparseSet:has"></a>
+    <strong>SparseSet:has (self, i)</strong>
+    </dt>
+    <dd>
+    Return if the SparseSet contains the integer.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/SparseSet.html#">SparseSet</a></span>
+
+        </li>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        If the SparseSet contains the integer.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SparseSet:add"></a>
+    <strong>SparseSet:add (self, i)</strong>
+    </dt>
+    <dd>
+    Add the integer to the SparseSet.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SparseSet:remove"></a>
+    <strong>SparseSet:remove (self, i)</strong>
+    </dt>
+    <dd>
+    Remove the integer from the SparseSet
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SparseSet:elements"></a>
+    <strong>SparseSet:elements (self)</strong>
+    </dt>
+    <dd>
+    Return an iterator over the SpareSet's elements.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">func</span></span>
+        Iterator over the SparseSet's elements.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SparseSet:size"></a>
+    <strong>SparseSet:size (self)</strong>
+    </dt>
+    <dd>
+    Return the count of elements in the SparseSet
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        Count of elements in the SparseSet.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SparseSet:clear"></a>
+    <strong>SparseSet:clear (self)</strong>
+    </dt>
+    <dd>
+    Empty the SparseSet of its elements.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-01-27 20:28:04 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

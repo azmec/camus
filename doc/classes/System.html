@@ -1,0 +1,481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/ComponentArray.html">ComponentArray</a></li>
+  <li><a href="../classes/Context.html">Context</a></li>
+  <li><a href="../classes/EntityIndex.html">EntityIndex</a></li>
+  <li><a href="../classes/Filter.html">Filter</a></li>
+  <li><a href="../classes/Signature.html">Signature</a></li>
+  <li><a href="../classes/SparseSet.html">SparseSet</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><strong>System</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ensure.html">ensure</a></li>
+  <li><a href="../modules/camus.html">camus</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>System</code></h1>
+<p>Iterable collection of entities.</p>
+<p></p>
+
+
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#System:new">System:new (...)</a></td>
+	<td class="summary">Contruct a new System.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:entities">System:entities (self)</a></td>
+	<td class="summary">Return an iterator over the System's entities.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:evaluate">System:evaluate (self, entity, signature)</a></td>
+	<td class="summary">Return if the given entity should be within the System.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:getComponent">System:getComponent (self, entity, component)</a></td>
+	<td class="summary">Return the specified component of the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:remove">System:remove (self, entity)</a></td>
+	<td class="summary">Remove the entity from the System.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:setEnabled">System:setEnabled (self, value)</a></td>
+	<td class="summary">Set if the System is processing.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:isEnabled">System:isEnabled (self)</a></td>
+	<td class="summary">Return if the System is processing.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:getRequired">System:getRequired (self)</a></td>
+	<td class="summary">Returns the names of the System's required components.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:init">System:init (self, context)</a></td>
+	<td class="summary">Callback for when the System is added to the Context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:onEnabled">System:onEnabled (self)</a></td>
+	<td class="summary">Callback for when the System is enabled.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:onDisabled">System:onDisabled (self)</a></td>
+	<td class="summary">Callback for when the System is disabled.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:onEntityAdded">System:onEntityAdded (self, entity)</a></td>
+	<td class="summary">Callback for whenever an entity is added to the System.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System:onEntityRemoved">System:onEntityRemoved (self, entity)</a></td>
+	<td class="summary">Callback for whenever an entity is removed from the System.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "System:new"></a>
+    <strong>System:new (...)</strong>
+    </dt>
+    <dd>
+    Contruct a new System.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Names of the components to match for.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:entities"></a>
+    <strong>System:entities (self)</strong>
+    </dt>
+    <dd>
+    Return an iterator over the System's entities.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">func</span></span>
+        Iterator over the System's entities.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:evaluate"></a>
+    <strong>System:evaluate (self, entity, signature)</strong>
+    </dt>
+    <dd>
+    Return if the given entity should be within the System.
+ Note that this method proxies as a way to add entities. If the entity's
+ signature matches that of the System's, it is added to the System; if
+ the entity is already in the system and no longer matches, it's removed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         Entity to evaluate
+        </li>
+        <li><span class="parameter">signature</span>
+            <span class="types"><span class="type">tab</span></span>
+         Signature of the entity.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:getComponent"></a>
+    <strong>System:getComponent (self, entity, component)</strong>
+    </dt>
+    <dd>
+    Return the specified component of the entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+        <li><span class="parameter">component</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         String identifier for the component.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">...</span></span>
+        Data unique to the component.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:remove"></a>
+    <strong>System:remove (self, entity)</strong>
+    </dt>
+    <dd>
+    Remove the entity from the System.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">number</span></span>
+         The entity's ID.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:setEnabled"></a>
+    <strong>System:setEnabled (self, value)</strong>
+    </dt>
+    <dd>
+    Set if the System is processing.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the System should be processing.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:isEnabled"></a>
+    <strong>System:isEnabled (self)</strong>
+    </dt>
+    <dd>
+    Return if the System is processing.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        If the System is processing.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:getRequired"></a>
+    <strong>System:getRequired (self)</strong>
+    </dt>
+    <dd>
+    Returns the names of the System's required components.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">{string,</a></span>
+        ...} Table of the required components' identifiers.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:init"></a>
+    <strong>System:init (self, context)</strong>
+    </dt>
+    <dd>
+    Callback for when the System is added to the Context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+        <li><span class="parameter">context</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+         Context to which the System was added to.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:onEnabled"></a>
+    <strong>System:onEnabled (self)</strong>
+    </dt>
+    <dd>
+    Callback for when the System is enabled.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:onDisabled"></a>
+    <strong>System:onDisabled (self)</strong>
+    </dt>
+    <dd>
+    Callback for when the System is disabled.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:onEntityAdded"></a>
+    <strong>System:onEntityAdded (self, entity)</strong>
+    </dt>
+    <dd>
+    Callback for whenever an entity is added to the System.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">number</span></span>
+         The added entity's ID.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System:onEntityRemoved"></a>
+    <strong>System:onEntityRemoved (self, entity)</strong>
+    </dt>
+    <dd>
+    Callback for whenever an entity is removed from the System.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">number</span></span>
+         The removed entity's ID.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-01-27 20:28:04 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

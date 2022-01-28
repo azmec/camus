@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/ComponentArray.html">ComponentArray</a></li>
+  <li><a href="../classes/Context.html">Context</a></li>
+  <li><a href="../classes/EntityIndex.html">EntityIndex</a></li>
+  <li><a href="../classes/Filter.html">Filter</a></li>
+  <li><strong>Signature</strong></li>
+  <li><a href="../classes/SparseSet.html">SparseSet</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ensure.html">ensure</a></li>
+  <li><a href="../modules/camus.html">camus</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Signature</code></h1>
+<p>Psuedo-bitset implementation to generate Component signatures.</p>
+<p></p>
+
+
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Signature:new">Signature:new ()</a></td>
+	<td class="summary">Construct a new Signature.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Signature:setComponent">Signature:setComponent (self, i)</a></td>
+	<td class="summary">Set the component within the Signature.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Signature:clearComponent">Signature:clearComponent (self, i)</a></td>
+	<td class="summary">Clear the component within the Signature.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Signature:hasComponent">Signature:hasComponent (self, i)</a></td>
+	<td class="summary">Return if the Signature has the component.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Signature:isSubsetOf">Signature:isSubsetOf (self, other)</a></td>
+	<td class="summary">Return if the Signature is a subset of the other.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Signature:setComponents">Signature:setComponents (self, ...)</a></td>
+	<td class="summary">Set multiple components within the Signature.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Signature:new"></a>
+    <strong>Signature:new ()</strong>
+    </dt>
+    <dd>
+    Construct a new Signature.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Signature:setComponent"></a>
+    <strong>Signature:setComponent (self, i)</strong>
+    </dt>
+    <dd>
+    Set the component within the Signature.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Signature:clearComponent"></a>
+    <strong>Signature:clearComponent (self, i)</strong>
+    </dt>
+    <dd>
+    Clear the component within the Signature.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Signature:hasComponent"></a>
+    <strong>Signature:hasComponent (self, i)</strong>
+    </dt>
+    <dd>
+    Return if the Signature has the component.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        If the Signature has the component.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Signature:isSubsetOf"></a>
+    <strong>Signature:isSubsetOf (self, other)</strong>
+    </dt>
+    <dd>
+    Return if the Signature is a subset of the other.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+        <li><span class="parameter">other</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+         Signature to check if it is a "super" set.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        If the Signature is a subset of the other.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Signature:setComponents"></a>
+    <strong>Signature:setComponents (self, ...)</strong>
+    </dt>
+    <dd>
+    Set multiple components within the Signature.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">int</span></span>
+         Components to set.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-01-27 20:28:04 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

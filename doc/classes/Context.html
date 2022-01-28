@@ -1,0 +1,978 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/ComponentArray.html">ComponentArray</a></li>
+  <li><strong>Context</strong></li>
+  <li><a href="../classes/EntityIndex.html">EntityIndex</a></li>
+  <li><a href="../classes/Filter.html">Filter</a></li>
+  <li><a href="../classes/Signature.html">Signature</a></li>
+  <li><a href="../classes/SparseSet.html">SparseSet</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ensure.html">ensure</a></li>
+  <li><a href="../modules/camus.html">camus</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Context</code></h1>
+<p>SUMMARY</p>
+<p></p>
+
+
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Context:registerComponent">Context:registerComponent (self, component)</a></td>
+	<td class="summary">Register the component with the Context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:registerComponents">Context:registerComponents (self, t)</a></td>
+	<td class="summary">Register multiple components with the Context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:registerSystem">Context:registerSystem (self, system)</a></td>
+	<td class="summary">Register the System with the Context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:registerSystems">Context:registerSystems (self, t)</a></td>
+	<td class="summary">Register multiple Systems with the Context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:entity">Context:entity (self)</a></td>
+	<td class="summary">Register a new entity and returns its ID.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:destroy">Context:destroy (self, entity)</a></td>
+	<td class="summary">Destroy the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:flush">Context:flush (self)</a></td>
+	<td class="summary">Evaluate and flush changes to entities.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:give">Context:give (self, entity, component, ...)</a></td>
+	<td class="summary">Give the specified component to the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:take">Context:take (self, entity, component)</a></td>
+	<td class="summary">Remove the specified component from the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:emit">Context:emit (self, event)</a></td>
+	<td class="summary">Emit the specified event across all systems.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:hasComponent">Context:hasComponent (self, entity, component)</a></td>
+	<td class="summary">Return if the entity has the specified component.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:getComponent">Context:getComponent (self, entity, component)</a></td>
+	<td class="summary">Return the specified component data of the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:getComponents">Context:getComponents (self, entity, ...)</a></td>
+	<td class="summary">Return the data of the specified components of the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:getGroup">Context:getGroup (self, name)</a></td>
+	<td class="summary">Return the specified group.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:componentCount">Context:componentCount (self)</a></td>
+	<td class="summary">Return the total count of registered components.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:systemCount">Context:systemCount (self)</a></td>
+	<td class="summary">Return the total count of registered Systems.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:entityCount">Context:entityCount (self)</a></td>
+	<td class="summary">Return the count of living entities.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:getComponentID">Context:getComponentID (self, component)</a></td>
+	<td class="summary">Return the integer ID of the specified component.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:getComponentArray">Context:getComponentArray (self, component)</a></td>
+	<td class="summary">Return the ComponentArray of the specified component.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:getComponentList">Context:getComponentList (self)</a></td>
+	<td class="summary">Return the list of all registered components' string identifiers.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:getSignature">Context:getSignature (self, entity)</a></td>
+	<td class="summary">Return the Signature of the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:entities">Context:entities (self)</a></td>
+	<td class="summary">Return an iterator traversing all living entities.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:createComponent">Context:createComponent (self, name, constructor)</a></td>
+	<td class="summary">Create and register a new component.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:createSystem">Context:createSystem (self, Loose)</a></td>
+	<td class="summary">Create and register a new System.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:createGroup">Context:createGroup (self, name, ...)</a></td>
+	<td class="summary">Create a new group matching for the given components.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:clear">Context:clear (self)</a></td>
+	<td class="summary">Remove everything from the Context, effectively making it "like new".</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:onEntityAdded">Context:onEntityAdded (self, entity)</a></td>
+	<td class="summary">Callback for when an entity is added to the Context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Context:onEntityRemoved">Context:onEntityRemoved (self, entity)</a></td>
+	<td class="summary">Callback for when an entity is removed from the Context.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Context:registerComponent"></a>
+    <strong>Context:registerComponent (self, component)</strong>
+    </dt>
+    <dd>
+    Register the component with the Context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">component</span>
+            <span class="types"><span class="type">tab</span></span>
+         The initializing component table.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:registerComponents"></a>
+    <strong>Context:registerComponents (self, t)</strong>
+    </dt>
+    <dd>
+    Register multiple components with the Context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">t</span>
+            <span class="types"><span class="type">{tab}</span></span>
+         Table of components to register.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:registerSystem"></a>
+    <strong>Context:registerSystem (self, system)</strong>
+    </dt>
+    <dd>
+    Register the System with the Context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">system</span>
+            <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+         System to register.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:registerSystems"></a>
+    <strong>Context:registerSystems (self, t)</strong>
+    </dt>
+    <dd>
+    Register multiple Systems with the Context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">t</span>
+            <span class="types"><a class="type" href="../classes/System.html#">{System}</a></span>
+         Table of Systems to register.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:entity"></a>
+    <strong>Context:entity (self)</strong>
+    </dt>
+    <dd>
+    Register a new entity and returns its ID.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The entity's ID.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:destroy"></a>
+    <strong>Context:destroy (self, entity)</strong>
+    </dt>
+    <dd>
+    Destroy the entity.
+ Note that the entity exists until the next `:flush()` call.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:flush"></a>
+    <strong>Context:flush (self)</strong>
+    </dt>
+    <dd>
+    Evaluate and flush changes to entities.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:give"></a>
+    <strong>Context:give (self, entity, component, ...)</strong>
+    </dt>
+    <dd>
+    Give the specified component to the entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+        <li><span class="parameter">component</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The component's string identifier.
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">...</span></span>
+         Contrusctor arguments unique to the component.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:take"></a>
+    <strong>Context:take (self, entity, component)</strong>
+    </dt>
+    <dd>
+    Remove the specified component from the entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+        <li><span class="parameter">component</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The component's string identifier.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:emit"></a>
+    <strong>Context:emit (self, event)</strong>
+    </dt>
+    <dd>
+    Emit the specified event across all systems.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">event</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The event's string identifier.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:hasComponent"></a>
+    <strong>Context:hasComponent (self, entity, component)</strong>
+    </dt>
+    <dd>
+    Return if the entity has the specified component.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+        <li><span class="parameter">component</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The component's string identifier.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        If the entity has the specified component.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:getComponent"></a>
+    <strong>Context:getComponent (self, entity, component)</strong>
+    </dt>
+    <dd>
+    Return the specified component data of the entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+        <li><span class="parameter">component</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The component's string identifier.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">...</span></span>
+        Data unique to the specified component.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:getComponents"></a>
+    <strong>Context:getComponents (self, entity, ...)</strong>
+    </dt>
+    <dd>
+    Return the data of the specified components of the entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Loose list of components' string identifiers.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">...</span></span>
+        Data unique to the specified components.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:getGroup"></a>
+    <strong>Context:getGroup (self, name)</strong>
+    </dt>
+    <dd>
+    Return the specified group.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The group's string identifier.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/System.html#">System</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:componentCount"></a>
+    <strong>Context:componentCount (self)</strong>
+    </dt>
+    <dd>
+    Return the total count of registered components.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The count of registered components.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:systemCount"></a>
+    <strong>Context:systemCount (self)</strong>
+    </dt>
+    <dd>
+    Return the total count of registered Systems.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The count of registered Systems.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:entityCount"></a>
+    <strong>Context:entityCount (self)</strong>
+    </dt>
+    <dd>
+    Return the count of living entities.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The count of living entities.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:getComponentID"></a>
+    <strong>Context:getComponentID (self, component)</strong>
+    </dt>
+    <dd>
+    Return the integer ID of the specified component.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">component</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The component's string identifier.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The integer ID of the specified component.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:getComponentArray"></a>
+    <strong>Context:getComponentArray (self, component)</strong>
+    </dt>
+    <dd>
+    Return the ComponentArray of the specified component.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">component</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The component's string identifier.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/ComponentArray.html#">ComponentArray</a></span>
+        The ComponentArray of the specified component.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:getComponentList"></a>
+    <strong>Context:getComponentList (self)</strong>
+    </dt>
+    <dd>
+    Return the list of all registered components' string identifiers.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">{string,</a></span>
+        ...} List of registered components' string identifiers.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:getSignature"></a>
+    <strong>Context:getSignature (self, entity)</strong>
+    </dt>
+    <dd>
+    Return the Signature of the entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/Signature.html#">Signature</a></span>
+        The entity's Signature.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:entities"></a>
+    <strong>Context:entities (self)</strong>
+    </dt>
+    <dd>
+    Return an iterator traversing all living entities.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">func</span></span>
+        Iterator traversing all living entities.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:createComponent"></a>
+    <strong>Context:createComponent (self, name, constructor)</strong>
+    </dt>
+    <dd>
+    Create and register a new component.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         String identifier of the new component.
+        </li>
+        <li><span class="parameter">constructor</span>
+            <span class="types"><span class="type">func</span></span>
+         Constructor function returning component data.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:createSystem"></a>
+    <strong>Context:createSystem (self, Loose)</strong>
+    </dt>
+    <dd>
+    Create and register a new System.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">Loose</span>
+            <span class="types"><span class="type">...</span></span>
+         list of component string identifiers to match for.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:createGroup"></a>
+    <strong>Context:createGroup (self, name, ...)</strong>
+    </dt>
+    <dd>
+    Create a new group matching for the given components.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The group's string identifier.
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Loose list of component string identifiers to match for.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:clear"></a>
+    <strong>Context:clear (self)</strong>
+    </dt>
+    <dd>
+    Remove everything from the Context, effectively making it "like new".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:onEntityAdded"></a>
+    <strong>Context:onEntityAdded (self, entity)</strong>
+    </dt>
+    <dd>
+    Callback for when an entity is added to the Context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Context:onEntityRemoved"></a>
+    <strong>Context:onEntityRemoved (self, entity)</strong>
+    </dt>
+    <dd>
+    Callback for when an entity is removed from the Context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Context.html#">Context</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         The entity's ID.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-01-27 20:28:04 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

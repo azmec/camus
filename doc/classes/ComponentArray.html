@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><strong>ComponentArray</strong></li>
+  <li><a href="../classes/Context.html">Context</a></li>
+  <li><a href="../classes/EntityIndex.html">EntityIndex</a></li>
+  <li><a href="../classes/Filter.html">Filter</a></li>
+  <li><a href="../classes/Signature.html">Signature</a></li>
+  <li><a href="../classes/SparseSet.html">SparseSet</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ensure.html">ensure</a></li>
+  <li><a href="../modules/camus.html">camus</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>ComponentArray</code></h1>
+<p>Sequential table containing entity component data.</p>
+<p></p>
+
+
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ComponentArray:new">ComponentArray:new (constructor)</a></td>
+	<td class="summary">Construct a new ComponentArray.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ComponentArray:construct">ComponentArray:construct (self, entity, ...)</a></td>
+	<td class="summary">Construct a new component for the entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ComponentArray:peak">ComponentArray:peak (self, entity)</a></td>
+	<td class="summary">Return the entity's component data.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ComponentArray:destroy">ComponentArray:destroy (self, entity)</a></td>
+	<td class="summary">Destroy the component data of the given entity.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ComponentArray:has">ComponentArray:has (self, entity)</a></td>
+	<td class="summary">Returns if the entity has component data in this ComponentArray.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ComponentArray:new"></a>
+    <strong>ComponentArray:new (constructor)</strong>
+    </dt>
+    <dd>
+    Construct a new ComponentArray.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">constructor</span>
+            <span class="types"><span class="type">func</span></span>
+         A function which returns component data.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/ComponentArray.html#">ComponentArray</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ComponentArray:construct"></a>
+    <strong>ComponentArray:construct (self, entity, ...)</strong>
+    </dt>
+    <dd>
+    Construct a new component for the entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/ComponentArray.html#">ComponentArray</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         An entity's ID.
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">{...}</span></span>
+         Arguments unique to the constructor.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ComponentArray:peak"></a>
+    <strong>ComponentArray:peak (self, entity)</strong>
+    </dt>
+    <dd>
+    Return the entity's component data.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/ComponentArray.html#">ComponentArray</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         An entity's ID.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{...}</span></span>
+        Data unique to the component.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ComponentArray:destroy"></a>
+    <strong>ComponentArray:destroy (self, entity)</strong>
+    </dt>
+    <dd>
+    Destroy the component data of the given entity.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/ComponentArray.html#">ComponentArray</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         An entity's ID.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ComponentArray:has"></a>
+    <strong>ComponentArray:has (self, entity)</strong>
+    </dt>
+    <dd>
+    Returns if the entity has component data in this ComponentArray.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/ComponentArray.html#">ComponentArray</a></span>
+
+        </li>
+        <li><span class="parameter">entity</span>
+            <span class="types"><span class="type">int</span></span>
+         An entity's ID.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        If the entity has this ComponentArray's component data.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-01-27 20:28:04 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
