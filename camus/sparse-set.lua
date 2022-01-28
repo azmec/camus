@@ -17,13 +17,13 @@ end
 -- @tparam SparseSet self
 -- @tparam int i
 -- @treturn bool If the SparseSet contains the integer.
-SparseSet.has = function(self, i) return self.sparse[i] ~= nil end
+SparseSet.contains = function(self, i) return self.sparse[i] ~= nil end
 
---- Add the integer to the SparseSet.
+--- Insert the integer into the SparseSet.
 -- @tparam Signature self
 -- @tparam int i 
-SparseSet.add = function(self, i)
-    if self:has(i) then return end
+SparseSet.insert = function(self, i)
+    if self:contains(i) then return end
 
     local index = #self.dense + 1
     self.dense[index] = i
@@ -41,7 +41,7 @@ SparseSet.remove = function(self, i)
     dense[sparse[i]] = tail
     sparse[tail]     = sparse[i]
     dense[#dense]    = nil
-    sparse[element]  = nil
+    sparse[i]  = nil
 end
 
 --- Return an iterator over the SpareSet's elements.
