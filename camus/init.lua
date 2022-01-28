@@ -1,11 +1,11 @@
----
+--- An absurd ECS for LÖVE.
 -- @module camus
 
 local PATH = (...):gsub('%.init$', '')
 
 local camus = {
     _VERSION     = "0.3",
-    _DESCRIPTION = "An absurd ECS library for LÖVE.",
+    _DESCRIPTION = "An absurd ECS for LÖVE.",
     _LICENSE     = [[
         MIT LICENSE
 
