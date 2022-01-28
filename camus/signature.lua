@@ -1,19 +1,13 @@
 --- Psuedo-bitset implementation to generate Component signatures.
 -- @classmod Signature
 
--- NOTE:
--- If unit testing with `busted`, change to "bit32."
-local bit = require 'bit32'
+local bit = require 'bit'
 
 local band, bor, bnot = bit.band, bit.bor, bit.bnot
 local lshift, rshift  = bit.lshift, bit.rshift
 local min, floor      = math.min, math.floor
 
--- NOTE:
--- If unit testing with `busted`, comment function
--- delcaration out and localization in.
 local pack = function(...) return { ... } end
---local pack = table.pack
 
 --[[
 -- Note that the "bitset" behavior seen here isn't a real bitset.

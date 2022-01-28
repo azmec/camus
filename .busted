@@ -1,7 +1,0 @@
-return {
-        _all = {
-                verbose = true,
-                pattern = '-spec',
-                lua     = 'lua'
-            }
-    }

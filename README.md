@@ -40,7 +40,7 @@ Documentation can be found [here](https://www.aldats.dev/camus).
 
 Testing
 -------
-`camus` can be tested using [busted](https://olivinelabs.com/busted).
+`camus` is tested using [LuaUnit](https://github.com/bluebird75/luaunit).
 
 Other Resources
 ---------------
