@@ -1,12 +1,9 @@
 local luaunit = require "spec.luaunit"
 local Signature = require "camus.signature"
 
-local run = luaunit.LuaUnit.run
 local assert_equals = luaunit.assertEquals
-local assert_true = luaunit.assertTrue
-local assert_false = luaunit.assertFalse
-
-local test = {}
+local assert_true   = luaunit.assertTrue
+local assert_false  = luaunit.assertFalse
 
 function test_set_component()
     local signature = Signature()
@@ -47,4 +44,4 @@ function test_not_subset_match()
     assert_false(s1:isSubsetOf(s2))
 end
 
-os.exit(run())
+os.exit(luaunit.LuaUnit.run())
