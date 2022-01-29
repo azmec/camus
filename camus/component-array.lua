@@ -18,7 +18,7 @@ end
 -- @tparam ComponentArray self
 -- @tparam int entity An entity's ID.
 -- @tparam {...} ... Arguments unique to the constructor.
-ComponentArray.construct = function(self, entity, ...)
+ComponentArray.insert = function(self, entity, ...)
     self.entities[entity] = self.constructor(...)
 end
 
@@ -33,15 +33,15 @@ end
 --- Destroy the component data of the given entity.
 -- @tparam ComponentArray self
 -- @tparam int entity An entity's ID.
-ComponentArray.destroy = function(self, entity)
-    self.entities = nil
+ComponentArray.remove = function(self, entity)
+    self.entities[entity] = nil
 end
     
 --- Returns if the entity has component data in this ComponentArray.
 -- @tparam ComponentArray self
 -- @tparam int entity An entity's ID.
 -- @treturn bool If the entity has this ComponentArray's component data.
-ComponentArray.has = function(self, entity)
+ComponentArray.contains = function(self, entity)
     return self.entities[entity] ~= nil
 end
 
