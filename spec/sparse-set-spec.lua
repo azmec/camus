@@ -1,7 +1,6 @@
 local luaunit = require "spec.luaunit"
 local SparseSet = require "camus.sparse-set"
 
-local run           = luaunit.LuaUnit.run
 local assert_equals = luaunit.assertEquals
 local assert_true   = luaunit.assertTrue
 local assert_false  = luaunit.assertFalse
