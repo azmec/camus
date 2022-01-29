@@ -9,17 +9,13 @@
 local PATH      = (...):gsub('%.[^%.]+$', '')
 local Signature = require(PATH .. '.signature')
 
--- NOTE:
--- If unit testing with `busted`, comment function
--- delcaration out and localization in.
 local pack = function(...) return { ... } end
---local pack = table.pack
 
 local Filter = {}
 Filter.__mt = { __index = Filter }
 
 --- Construct a new Filter.
--- @tparam {int} components Array of known component IDs.
+-- @tparam tab components String-indexed dictionary of component IDs.
 -- @tparam string ... Components to generate a Signature from.
 -- @see Context:getComponentList
 -- @treturn Filter
@@ -47,6 +43,9 @@ Filter.match = function(self, other)
     return self.signature:isSubsetOf(other)
 end
 
+-- FIXME:
+-- Attempting to construct a filter with `Filter()` and using arguments
+-- makes the first argument of `new()` be `self` instead of `components`
 return setmetatable(Filter, {
     __call = function(...)
         return Filter.new(...)
