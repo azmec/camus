@@ -35,13 +35,17 @@ end
 -- @tparam int i 
 SparseSet.remove = function(self, i)
     if not self:contains(i) then return end
-    local dense, sparse = self.sparse, self.dense
-    local tail = dense[#dense]
 
-    dense[sparse[i]] = tail
-    sparse[tail]     = sparse[i]
-    dense[#dense]    = nil
-    sparse[i]  = nil
+    local size  = #self.dense
+    local index = self.sparse[i]
+    local tail  = self.dense[size]
+
+    self.dense[index] = tail  
+    self.sparse[tail] = index 
+    self.dense[size]  = nil
+
+    -- Remove the pointing index in the sparse array
+    self.sparse[i]    = nil
 end
 
 --- Return an iterator over the SpareSet's elements.

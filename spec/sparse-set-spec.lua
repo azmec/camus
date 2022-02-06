@@ -1,4 +1,4 @@
-local luaunit = require "spec.luaunit"
+local luaunit   = require "spec.luaunit"
 local SparseSet = require "camus.sparse-set"
 
 local assert_equals = luaunit.assertEquals
@@ -21,19 +21,31 @@ end
 
 function test_contains_element()
     local sparse_set = SparseSet()
-    sparse_set:insert(5)
-
-    assert_true(sparse_set:contains(5))
-end
-
-function test_remove_element()
-    local sparse_set = SparseSet()
     for i = 1, 10 do
         sparse_set:insert(i)
     end
 
-    sparse_set:remove(7)
-    assert_true(sparse_set.sparse[7] == 10)
+    sparse_set:remove(5)
+
+    assert_false(sparse_set:contains(5))
+end
+
+function test_remove()
+    local ss = SparseSet()
+    for i = 1, 10 do ss:insert(i) end
+
+    ss:remove(7)
+
+    --[[
+    -- Not exactly a "unit" test, but making sure the single "remove"
+    -- operation works as intended requires making sure both table of
+    -- the SparseSet contain the expected data.
+    --]]
+    expected_sparse = {1, 2, 3, 4, 5, 6, nil, 8, 9, 7}
+    expected_dense  = {1, 2, 3, 4, 5, 6, 10, 8, 9}
+
+    assert_equals(ss.dense, expected_dense)
+    assert_equals(ss.sparse, expected_sparse)
 end
 
 function test_iterate_elements()
@@ -59,7 +71,9 @@ function test_size()
         sparse_set:insert(i)
     end
 
-    assert_true(sparse_set:size() == 25)
+    sparse_set:remove(20)
+
+    assert_true(sparse_set:size() == 24)
 end
 
 function test_clear()
