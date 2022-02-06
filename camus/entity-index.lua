@@ -23,7 +23,7 @@ end
 -- @tparam int entity An entity's ID. 
 -- @treturn bool If the entity is in the EntityIndex.
 EntityIndex.isAlive = function(self, entity)
-    return self.entities:has(entity)
+    return self.entities:contains(entity)
 end
 
 --- Create a new entity and return its ID.
@@ -41,7 +41,7 @@ EntityIndex.createEntity = function(self)
         id = self.living + 1 
     end
 
-    self.entities:add(id)
+    self.entities:insert(id)
     self.living = id
 
     return id
@@ -51,7 +51,9 @@ end
 -- @tparam EntityIndex self
 -- @tparam int entity An entity's ID.
 EntityIndex.destroyEntity = function(self, entity)
-    if self.living <= 0 or self.entities:has(entity) then return end
+    if self.living <= 0 or not self.entities:contains(entity) then 
+        return 
+    end
 
     self.entities:remove(entity)
     self.destroyed:push(entity)
