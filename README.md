@@ -1,17 +1,11 @@
-<div align="center">
-    <h3>camus</h3>
-    <h5>
-        An absurd Entity Component System for LÖVE.
-    <h5>
-</div>
+camus
+=====
+An absurd Entity Component System for LÖVE.
 
 Table of Contents
 =================
 1. [About](#About)
 2. [Installation](#Installation)
-3. [Usage](#Usage)
-4. [Documentation](#Documentation)
-5. [Testing](#Testing)
 6. [Other Resources](#Other-Resources)
     1. [LÖVE[ly] Entity Component Systems](#lovely-ecs)
     2. [On Entity Component Systems](#on-entity-component-systems)
@@ -52,23 +46,6 @@ camus.globalize()
 -- accessible in the global namespace!
 
 local context = Context()
-```
-
-Documentation <a name="Documentation"></a>
--------------
-Further information on getting started with `camus` can be found on the
-[hosted documentation][B0]. It is also available locally under `docs/`.
-
-[B0]: https://camus.aldats.dev
-
-Testing <a name="Testing"></a>
--------
-`camus` is tested using [LuaUnit](https://github.com/bluebird75/luaunit).
-The testing suite is provided within the repository under `spec/luaunit`
-and is run like so:
-
-```cmd
-luajit spec/init.lua -v
 ```
 
 Other Resources <a name="Other-Resources"></a>
